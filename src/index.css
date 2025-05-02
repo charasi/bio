@@ -8,12 +8,21 @@
     --color-avocado-600: oklch(0.53 0.12 118.34);
 }
 
-/* Extend the font-family in your CSS file directly */
 @layer base {
     :root {
         --font-popins: 'Poppins', sans-serif;
         --font-cursive: 'Cursive', sans-serif;
-
         --bg-works-gradient: linear-gradient(135deg, #f97316, #dc2626);
     }
 }
+
+@layer utilities {
+    .animate-left {
+        transform: translateX(-200px);
+    }
+
+    .transition-transform {
+        transition: transform 1s ease;
+    }
+}
+
