@@ -1,20 +1,12 @@
 import { projects } from "../misc/misc.ts";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
-/**
- * displays a list of projects
- * @constructor
- */
 export const Works = () => {
-  const [animatingIndex, setAnimatingIndex] = useState<number | null>(null);
   const navigate = useNavigate();
 
-  const handleClick = (link: string, index: number) => {
-    setAnimatingIndex(index);
-    setTimeout(() => {
-      navigate(link);
-    }, 50); // Match your animation duration
+  const handleClick = (link: string) => {
+    navigate(link);
   };
 
   return (
@@ -39,18 +31,17 @@ export const Works = () => {
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
               key={project.link}
-              onClick={() => handleClick(project.link, index)}
-              className="flex flex-col items-center"
+              onClick={() => handleClick(project.link)}
+              className="flex flex-col items-center cursor-pointer"
             >
-              <img
+              <motion.img
                 src={project.image}
                 alt={project.name}
-                className={`transition-transform duration-500 hover:scale-105 w-88 h-88 object-cover rounded-xl shadow-lg ${
-                  animatingIndex === index ? "animate-left" : ""
-                }`}
+                layoutId={`image-${project.name}`}
+                className="w-88 h-88 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
               />
               <span className="mt-2 text-white text-lg font-medium">
                 {project.name}

@@ -9,12 +9,14 @@ export const Footer = () => {
         <div className="flex space-x-6">
           <a
             href="https://www.linkedin.com/in/charles-asiama"
+            target="_blank"
             className="transition duration-300 ease-in-out hover:scale-110"
           >
             <img src={linkedinIcon} alt="LinkedIn Icon" className="w-7 h-7" />
           </a>
           <a
             href="https://github.com/charasi"
+            target="_blank"
             className="transition duration-300 ease-in-out hover:scale-110"
           >
             <img src={githubIcon} alt="GitHub Icon" className="w-7 h-7" />

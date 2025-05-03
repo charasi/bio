@@ -6,14 +6,14 @@ export const projects = [
     id: 1,
     name: "Santorini",
     image: santorini,
-    link: "/works/santorini",
+    link: "/santorini",
     description: "A board game implementation in PixiJS.",
   },
   {
     id: 2,
     name: "Raft",
     image: raft,
-    link: "/works/raft",
+    link: "/raft",
     description: "Raft consensus algorithm.",
   },
 ];

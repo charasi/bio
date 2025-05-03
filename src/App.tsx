@@ -1,28 +1,27 @@
 import { Header } from "./components/layout/Header.tsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/layout/Footer.tsx";
 import { Works } from "./components/layout/Works.tsx";
 import { About } from "./components/layout/About.tsx";
 import { Raft } from "./components/projects/Raft.tsx";
+import { Santorini } from "./components/projects/Santorini.tsx";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
-  // Create a history object
+  const location = useLocation();
+
   return (
     <>
-      <BrowserRouter>
-        {/* header app fixed to top */}
-        <Header />
-        <Routes>
-          {/* default route when page loads*/}
+      <Header />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Works />} />
-          {/* route to about page */}
           <Route path="/about" element={<About />} />
-          {/* the following routes are routes to projects */}
-          <Route path="/works/raft" element={<Raft />} />
+          <Route path="/raft" element={<Raft />} />
+          <Route path="/santorini" element={<Santorini />} />
         </Routes>
-        {/* footer fixed to bottom */}
-        <Footer />
-      </BrowserRouter>
+      </AnimatePresence>
+      <Footer />
     </>
   );
 }

@@ -16,7 +16,7 @@ export const Header = () => {
 
   // Check if current route is a specific project under /works/
   const isProjectPage: boolean =
-    location.pathname.startsWith("/works") && location.pathname !== "/works";
+    location.pathname === "/" || location.pathname === "/about";
   return (
     <header className="w-full h-32 bg-gradient-to-r from-orange-400 to-indigo-950">
       <div className="max-w-screen-xl mx-auto px-4 flex justify-between items-center h-full">
@@ -24,10 +24,10 @@ export const Header = () => {
         <div className="flex items-center space-x-4 text-white font-bold text-sm sm:text-base">
           {/* display back text if route is works/... */}
           <Link to="/" className="hover:underline">
-            {isProjectPage ? "← Back" : "Charles Asiama"}
+            {isProjectPage ? "Charles Asiama" : "← Back"}
           </Link>
           {/* Conditionally render Resume and About only if not on project page */}
-          {!isProjectPage && (
+          {isProjectPage && (
             <>
               <a
                 href={resume}

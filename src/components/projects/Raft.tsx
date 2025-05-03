@@ -1,32 +1,27 @@
 import raft from "/pics/raft.png";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export const Raft = () => {
-  const [animateIn, setAnimateIn] = useState(false);
-
-  useEffect(() => {
-    setAnimateIn(true);
-  }, []);
-
   return (
     <div className="flex bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen overflow-hidden px-8 pt-24">
-      {/* Left column with title and image */}
+      {/* Left column */}
       <div className="flex flex-col items-center mr-8">
-        {/* Title aligned to top */}
-        <span className="text-white text-4xl font-bold mb-8">Raft</span>
-
-        {/* Animated image */}
-        <div
-          className={`transition-all duration-1000 ${
-            animateIn ? "translate-x-0 opacity-100" : "translate-x-32 opacity-0"
-          }`}
+        <span className="text-white text-4xl font-bold mb-4">Raft</span>
+        <motion.img
+          src={raft}
+          alt="Raft"
+          layoutId="image-Raft"
+          className="w-80 h-80 object-cover rounded-xl shadow-lg mb-4"
+        />
+        <a
+          href="https://github.com/charasi/"
+          target="_blank"
+          className="btn bg-[#ffe500] rounded-tr-[8px] rounded-br-none
+          rounded-tl-none rounded-bl-[8px] font-sans leading-[24px] py-2 px-6
+          transition duration-300 ease-in-out hover:scale-110"
         >
-          <img
-            src={raft}
-            alt="Raft"
-            className="w-80 h-80 object-cover rounded-xl shadow-lg"
-          />
-        </div>
+          Launch
+        </a>
       </div>
 
       {/* Divider */}
