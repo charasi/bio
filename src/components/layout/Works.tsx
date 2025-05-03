@@ -2,6 +2,10 @@ import { projects } from "../misc/misc.ts";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * displays a list of projects
+ * @constructor
+ */
 export const Works = () => {
   const [animatingIndex, setAnimatingIndex] = useState<number | null>(null);
   const navigate = useNavigate();

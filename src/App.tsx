@@ -10,12 +10,17 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        {/* header app fixed to top */}
         <Header />
         <Routes>
+          {/* default route when page loads*/}
+          <Route path="/" element={<Works />} />
+          {/* route to about page */}
           <Route path="/about" element={<About />} />
-          <Route path="/works" element={<Works />} />
+          {/* the following routes are routes to projects */}
           <Route path="/works/raft" element={<Raft />} />
         </Routes>
+        {/* footer fixed to bottom */}
         <Footer />
       </BrowserRouter>
     </>
