@@ -13,7 +13,7 @@ export const Santorini = () => {
         targets: imgRef.current,
         duration: 1,
         stagger: 0.2,
-        ease: "power2.inOut",
+        ease: "power1.inOut",
         //absolute: true,
         //fade: true,
       });
@@ -24,15 +24,17 @@ export const Santorini = () => {
   return (
     <div className="flex bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen overflow-hidden px-8 pt-24">
       {/* Left column */}
-      <div className="flex flex-col items-center mr-8">
+      <div className="flex flex-col items-center mr-8 min-h-[450px]">
         <span className="text-white text-4xl font-bold mb-4">Santorini</span>
-        <img
-          src={santorini}
-          alt="Santorini"
-          ref={imgRef}
-          data-flip-id="Santorini"
-          className="w-64 h-64 object-cover rounded-xl shadow-lg mb-4"
-        />
+        <div className="relative w-64 h-64 mb-4">
+          <img
+            ref={imgRef}
+            src={santorini}
+            alt="Santorini"
+            data-flip-id="Santorini"
+            className="w-full h-full object-cover rounded-xl shadow-lg"
+          />
+        </div>
         <a
           href="https://github.com/charasi/"
           target="_blank"
