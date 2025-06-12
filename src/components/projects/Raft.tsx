@@ -1,5 +1,4 @@
 import raft from "/pics/raft.png";
-import { motion } from "framer-motion";
 
 export const Raft = () => {
   return (
@@ -7,10 +6,10 @@ export const Raft = () => {
       {/* Left column */}
       <div className="flex flex-col items-center mr-8">
         <span className="text-white text-4xl font-bold mb-4">Raft</span>
-        <motion.img
+        <img
           src={raft}
           alt="Raft"
-          layoutId="image-Raft"
+          //layoutId="image-Raft"
           className="w-80 h-80 object-cover rounded-xl shadow-lg mb-4"
         />
         <a

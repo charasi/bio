@@ -5,7 +5,11 @@ import { About } from "./components/layout/About.tsx";
 import { Raft } from "./components/projects/Raft.tsx";
 import { Santorini } from "./components/projects/Santorini.tsx";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+
+import gsap from "gsap";
+import { Flip } from "gsap/Flip";
+
+gsap.registerPlugin(Flip);
 
 function App() {
   const location = useLocation();
@@ -13,14 +17,12 @@ function App() {
   return (
     <>
       <Header />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Works />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/raft" element={<Raft />} />
-          <Route path="/santorini" element={<Santorini />} />
-        </Routes>
-      </AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Works />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/raft" element={<Raft />} />
+        <Route path="/santorini" element={<Santorini />} />
+      </Routes>
       <Footer />
     </>
   );
