@@ -1,6 +1,33 @@
 import raft from "/pics/raft.png";
+import { useFlipStore } from "../../utils/flipStore.ts";
+import { useEffect, useRef } from "react";
+import { Flip } from "gsap/Flip";
 
 export const Raft = () => {
+  const { flipState, setFlipState } = useFlipStore();
+  const imgRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (!hasAnimated.current && flipState && imgRef.current) {
+      hasAnimated.current = true;
+
+      Flip.from(flipState, {
+        targets: imgRef.current,
+        duration: 1,
+        ease: "power1.inOut",
+        onComplete: () => {
+          const state = Flip.getState(imgRef.current);
+          setFlipState(state); // Save new state after animation completes
+        },
+      });
+    } else if (!flipState && imgRef.current) {
+      // On normal mount or refresh with no flipState (e.g., user came directly here)
+      const state = Flip.getState(imgRef.current);
+      setFlipState(state); // Store state for future reverse transitions
+    }
+  }, []); // Only run on mount
+
   return (
     <div className="flex bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen overflow-hidden px-8 pt-24">
       {/* Left column */}
@@ -9,7 +36,8 @@ export const Raft = () => {
         <img
           src={raft}
           alt="Raft"
-          //layoutId="image-Raft"
+          ref={imgRef}
+          data-flip-id="Raft"
           className="w-80 h-80 object-cover rounded-xl shadow-lg mb-4"
         />
         <a

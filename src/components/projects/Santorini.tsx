@@ -1,40 +1,22 @@
 import santorini from "/pics/santorini.png";
-import { useEffect, useRef } from "react";
 import { useFlipStore } from "../../utils/flipStore.ts";
-import { Flip } from "gsap/Flip";
+import { useFlipAnimation } from "../../hooks/flipAnimation.ts";
 
 export const Santorini = () => {
   const { flipState, setFlipState } = useFlipStore();
-  const imgRef = useRef(null);
-
-  useEffect(() => {
-    if (flipState && imgRef.current) {
-      Flip.from(flipState, {
-        targets: imgRef.current,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power1.inOut",
-        //absolute: true,
-        //fade: true,
-      });
-      setFlipState(null);
-    }
-  }, [flipState, setFlipState]);
+  const imgRef = useFlipAnimation({ flipState, setFlipState });
 
   return (
     <div className="flex bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen overflow-hidden px-8 pt-24">
-      {/* Left column */}
-      <div className="flex flex-col items-center mr-8 min-h-[450px]">
+      <div className="flex flex-col items-center mr-8">
         <span className="text-white text-4xl font-bold mb-4">Santorini</span>
-        <div className="relative w-64 h-64 mb-4">
-          <img
-            ref={imgRef}
-            src={santorini}
-            alt="Santorini"
-            data-flip-id="Santorini"
-            className="w-full h-full object-cover rounded-xl shadow-lg"
-          />
-        </div>
+        <img
+          src={santorini}
+          alt="Santorini"
+          ref={imgRef}
+          data-flip-id="Santorini"
+          className="w-80 h-80 object-cover rounded-xl shadow-lg mb-4 -mt-2"
+        />
         <a
           href="https://github.com/charasi/"
           target="_blank"
@@ -47,10 +29,8 @@ export const Santorini = () => {
         </a>
       </div>
 
-      {/* Divider */}
       <div className="h-[450px] w-0.5 bg-white/10 mr-8" />
 
-      {/* Right content */}
       <div className="flex flex-col space-y-6">
         <p className="text-white max-w-xl">
           Implementation of the Santorini board game using modern web
