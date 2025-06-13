@@ -8,10 +8,12 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
+import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Flip);
+gsap.registerPlugin(SplitText);
 
 function App() {
   const location = useLocation();
