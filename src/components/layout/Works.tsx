@@ -1,13 +1,43 @@
-import { projects } from "../misc/misc.ts";
+import { useEffect, useRef } from "react";
+import { projects } from "../../utils/misc.ts";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useFlipStore } from "../../utils/flipStore.ts";
+import Flip from "gsap/Flip";
 
 export const Works = () => {
+  const { flipState, setFlipState } = useFlipStore();
   const navigate = useNavigate();
 
-  const handleClick = (link: string) => {
+  // Store refs for each project by name
+  const flipRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  const handleClick = (link: string, flipId: string) => {
+    const element = flipRefs.current[flipId];
+    if (!element) return;
+
+    const state = Flip.getState(element);
+    setFlipState(state);
     navigate(link);
   };
+
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    //(!hasAnimated.current && flipState)
+    if (!hasAnimated.current && flipState) {
+      const elements = Object.values(flipRefs.current).filter(Boolean);
+      if (elements.length > 0) {
+        hasAnimated.current = true;
+        Flip.from(flipState, {
+          targets: elements,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power1.inOut",
+        });
+        setFlipState(null);
+      }
+    }
+  }, []);
 
   return (
     <div className="pt-4 flex flex-1 items-start bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen">
@@ -34,14 +64,17 @@ export const Works = () => {
           {projects.map((project) => (
             <div
               key={project.link}
-              onClick={() => handleClick(project.link)}
+              onClick={() => handleClick(project.link, project.name)}
               className="flex flex-col items-center cursor-pointer"
             >
-              <motion.img
+              <img
                 src={project.image}
                 alt={project.name}
-                layoutId={`image-${project.name}`}
-                className="w-88 h-88 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+                data-flip-id={project.name}
+                ref={(el) => {
+                  flipRefs.current[project.name] = el;
+                }}
+                className="w-88 h-88 object-cover rounded-xl shadow-lg hover:scale-105"
               />
               <span className="mt-2 text-white text-lg font-medium">
                 {project.name}

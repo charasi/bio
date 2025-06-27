@@ -1,16 +1,21 @@
 import raft from "/pics/raft.png";
-import { motion } from "framer-motion";
+import { useFlipStore } from "../../utils/flipStore.ts";
+import { useFlipAnimation } from "../../hooks/flipAnimation.ts";
 
 export const Raft = () => {
+  const { flipState, setFlipState } = useFlipStore();
+  const imgRef = useFlipAnimation({ flipState, setFlipState });
+
   return (
     <div className="flex bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen overflow-hidden px-8 pt-24">
       {/* Left column */}
       <div className="flex flex-col items-center mr-8">
         <span className="text-white text-4xl font-bold mb-4">Raft</span>
-        <motion.img
+        <img
           src={raft}
           alt="Raft"
-          layoutId="image-Raft"
+          ref={imgRef}
+          data-flip-id="Raft"
           className="w-80 h-80 object-cover rounded-xl shadow-lg mb-4"
         />
         <a

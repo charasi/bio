@@ -17,6 +17,7 @@ export const Header = () => {
   // Check if current route is a specific project under /works/
   const isProjectPage: boolean =
     location.pathname === "/" || location.pathname === "/about";
+
   return (
     <header className="w-full h-32 bg-gradient-to-r from-orange-400 to-indigo-950">
       <div className="max-w-screen-xl mx-auto px-4 flex justify-between items-center h-full">
