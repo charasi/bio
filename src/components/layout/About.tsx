@@ -1,6 +1,17 @@
-import resume from "/casiama.pdf";
+import { useEffect } from "react";
+import { UserProgressChart } from "../charts/UserProgressChart.tsx";
 
 export const About = () => {
+  useEffect(() => {
+    fetch("/api/leetcode") // <-- This triggers the API route
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("LeetCode Profile Data:", data);
+      })
+      .catch((err) => {
+        console.error("Error fetching LeetCode data:", err);
+      });
+  }, []);
   return (
     <div className="pt-4 flex flex-1 items-start bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen">
       {/* Left column */}
@@ -26,15 +37,15 @@ export const About = () => {
         {/* Horizontal divider */}
         <hr className="border-t border-white/20 my-4" />
 
-        <h1 className="text-white text-2xl font-bold">
-          <span className="text-red-400 text-3xl">[ </span>
-          Resume
-          <span className="text-red-400 text-3xl"> ]</span>
+        <h1 className="flex justify-center text-white text-2xl font-bold">
+          LeetCode Progress
         </h1>
 
         {/* Resume iframe with white background */}
-        <div className="w-full h-[600px] bg-white rounded-lg shadow-lg overflow-hidden">
-          <iframe src={resume} title="Resume" className="w-full h-full" />
+        <div className="flex justify-center items-start w-full pt-0">
+          <div className="w-[600px] h-[350px] bg-white rounded-lg shadow-lg overflow-hidden flex justify-center items-center">
+            <UserProgressChart />
+          </div>
         </div>
       </div>
     </div>
