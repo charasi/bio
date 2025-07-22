@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { UserProgressChart } from "../charts/UserProgressChart.tsx";
+import { UserSkillsChart } from "../charts/UserSkillsChart.tsx";
 
 export const About = () => {
   useEffect(() => {
@@ -41,11 +42,24 @@ export const About = () => {
           LeetCode Progress
         </h1>
 
-        {/* Resume iframe with white background */}
+        {/* LeetCode Progress */}
         <div className="flex justify-center items-start w-full pt-0">
-          <div className="w-[600px] h-[350px] bg-white rounded-lg shadow-lg overflow-hidden flex justify-center items-center">
-            <UserProgressChart />
+          {/* Constrained container */}
+          <div className="flex flex-col space-y-6 w-full max-w-[1000px] px-4">
+            {/* First chart (fixed width) */}
+            <div className="w-[600px] h-[350px] bg-white rounded-lg shadow-lg overflow-hidden flex justify-center items-center mx-auto">
+              <UserProgressChart />
+            </div>
           </div>
+        </div>
+
+        {/* Skills Chart */}
+        <div
+          className=" w-[800px] max-h-[80vh] bg-transparent
+           rounded-lg shadow-lg overflow-y-auto overflow-x-hidden flex justify-center items-center
+           mt-6 px-4 mx-auto"
+        >
+          <UserSkillsChart />
         </div>
       </div>
     </div>

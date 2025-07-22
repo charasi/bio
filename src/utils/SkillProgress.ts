@@ -7,7 +7,7 @@ Chart.register(annotationPlugin);
 
 export let actions: any;
 
-export const getChartConfig = (
+export const getSkillChartConfig = (
   stats: QuestionStats,
 ): ChartConfiguration<"doughnut", number[], string> => {
   const accepted: number[] = stats.numAcceptedQuestions.map((d) => d.count);
@@ -23,8 +23,6 @@ export const getChartConfig = (
       stats.numUntouchedQuestions[idx].count;
     return `${difficulty} ${accepted}/${total}`;
   });
-
-  const beatsPerc: number = stats.totalQuestionBeatsPercentage;
 
   const dataset: ChartDataset<"doughnut", number[]> = {
     label: "Completed Challenges",
@@ -67,39 +65,6 @@ export const getChartConfig = (
       yAdjust: 0,
     },
   } as any;
-
-  const hoveredAnnotation = {
-    dLabel: {
-      type: "doughnutLabel",
-      content: ["Beats", `${beatsPerc}%`],
-      font: [
-        { size: 36, weight: "bold" }, // count
-        { size: 24, weight: "bold" }, // ratio
-      ],
-      color: ["#333", "#ff0000"],
-      position: "center",
-      textAlign: "center",
-      xAdjust: 0,
-      yAdjust: 0,
-    },
-  } as any;
-
-  actions = [
-    {
-      name: "Show Hover Text",
-      handler(chart: any) {
-        chart.options.plugins.annotation.annotations = hoveredAnnotation;
-        chart.update();
-      },
-    },
-    {
-      name: "Show Default Text",
-      handler(chart: any) {
-        chart.options.plugins.annotation.annotations = defaultAnnotation;
-        chart.update();
-      },
-    },
-  ];
 
   return {
     type: "doughnut",
