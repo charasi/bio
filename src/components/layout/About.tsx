@@ -54,13 +54,8 @@ export const About = () => {
         </div>
 
         {/* Skills Chart */}
-        <div
-          className=" w-[800px] max-h-[80vh] bg-transparent
-           rounded-lg shadow-lg overflow-y-auto overflow-x-hidden flex justify-center items-center
-           mt-6 px-4 mx-auto"
-        >
-          <UserSkillsChart />
-        </div>
+
+        <UserSkillsChart />
       </div>
     </div>
   );
