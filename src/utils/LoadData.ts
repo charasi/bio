@@ -51,10 +51,7 @@ export const loadSkillsProgress = async (): Promise<SkillProgress[] | null> => {
       );
 
       const totalProblems =
-        numProblemSolved +
-        numProblemWrong +
-        numProblemUntouched +
-        numProblemWrong;
+        numProblemSolved + numProblemWrong + numProblemUntouched;
 
       const formatID: (name: string) => string = (name: string): string => {
         return name

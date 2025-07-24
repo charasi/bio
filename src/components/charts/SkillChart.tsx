@@ -9,7 +9,12 @@ export const SkillChart = ({ stats }: { stats: QuestionStats }) => {
 
   useEffect(() => {
     const renderChart = () => {
-      if (!stats || stats.numAcceptedQuestions.length === 0) return;
+      if (
+        !stats ||
+        !stats.numAcceptedQuestions ||
+        stats.numAcceptedQuestions.length === 0
+      )
+        return;
 
       const chartConfig = getSkillChartConfig(stats);
 

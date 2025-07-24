@@ -38,14 +38,10 @@ export const getChartConfig = (
     (sum, d) => sum + d.count,
     0,
   );
-  const totalQuestions = stats.numAcceptedQuestions.reduce(
-    (sum, d, idx) =>
-      sum +
-      d.count +
-      stats.numFailedQuestions[idx].count +
-      stats.numUntouchedQuestions[idx].count,
-    0,
-  );
+  const totalQuestions =
+    stats.numAcceptedQuestions.reduce((sum, d) => sum + d.count, 0) +
+    stats.numFailedQuestions.reduce((sum, d) => sum + d.count, 0) +
+    stats.numUntouchedQuestions.reduce((sum, d) => sum + d.count, 0);
 
   const chartData: ChartData<"doughnut", number[], string> = {
     labels,

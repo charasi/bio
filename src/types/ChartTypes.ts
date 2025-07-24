@@ -1,3 +1,5 @@
+import * as d3 from "d3";
+
 export type DifficultyLevel = "EASY" | "MEDIUM" | "HARD";
 
 export interface DifficultyCount {
@@ -16,7 +18,7 @@ export interface QuestionStats {
   totalQuestionBeatsPercentage: number;
 }
 
-export interface SkillProgress {
+export interface SkillProgress extends d3.SimulationNodeDatum {
   skill: Skill;
   stats: QuestionStats;
   numProblemSolved: number;

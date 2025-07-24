@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { BookService } from "./components/projects/BookService.tsx";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Flip);
@@ -26,6 +27,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/raft" element={<Raft />} />
         <Route path="/santorini" element={<Santorini />} />
+        <Route path="/bookservice" element={<BookService />} />
       </Routes>
       <Footer />
     </>

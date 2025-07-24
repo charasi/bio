@@ -1,77 +1,162 @@
 import { useEffect, useRef, useState } from "react";
-import { SkillProgress } from "../../types/ChartTypes.ts";
-import { loadSkillsProgress } from "../../utils/LoadData.ts";
+import { select } from "d3-selection";
+import { max } from "d3-array";
+import { scaleSqrt } from "d3-scale";
+import {
+  forceSimulation,
+  forceManyBody,
+  forceCenter,
+  forceCollide,
+} from "d3-force";
+import { QuestionStats, SkillProgress } from "../../types/ChartTypes";
+import { loadSkillsProgress } from "../../utils/LoadData";
 import { SkillChart } from "./SkillChart.tsx";
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
+import { InertiaPlugin } from "gsap/InertiaPlugin";
+
+gsap.registerPlugin(Draggable, InertiaPlugin);
 
 export const UserSkillsChart = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [bubbles, setBubbles] = useState<SkillProgress[]>([]);
+  const svgRef = useRef<SVGSVGElement | null>(null);
   const [popup, setPopup] = useState<{
-    x: number;
-    y: number;
-    stats: SkillProgress;
-  } | null>(null);
-  const [tooltip, setTooltip] = useState<{
-    x: number;
-    y: number;
-    content: string;
+    stats: QuestionStats;
   } | null>(null);
 
-  const minRadius = 50;
-  const maxRadius = 90;
+  const width = 800;
+  const height = 630;
 
   useEffect(() => {
-    loadSkillsProgress().then((skills) => {
-      const centerX = 500;
-      const centerY = 400;
-      const radius = 200;
+    loadSkillsProgress().then((skills: SkillProgress[] | null) => {
+      if (!skills) return;
 
-      const angleStep = (2 * Math.PI) / skills.length;
-      const bubblesWithPosition = skills.map((skill, i) => {
-        const r =
-          minRadius +
-          ((maxRadius - minRadius) * skill.numProblemSolved) /
-            skill.totalProblems;
+      const svg = select(svgRef.current);
 
-        const angle = i * angleStep;
-        return {
-          ...skill,
-          x: centerX + radius * Math.cos(angle),
-          y: centerY + radius * Math.sin(angle),
-          r,
-        };
-      });
+      const maxProblems = max(skills, (d) => d.totalProblems) ?? 1;
+      const radiusScale = scaleSqrt().domain([0, maxProblems]).range([20, 80]);
 
-      setBubbles(bubblesWithPosition);
+      // Clear any existing defs to avoid duplicates on re-render
+      svg.select("defs").remove();
+
+      // Append defs and clipPaths for each skill node
+      const defs = svg.append("defs");
+
+      const svgGroup = svg.selectAll("g");
+
+      svgGroup.attr("role", "button").style("cursor", "pointer");
+
+      defs
+        .selectAll("clipPath")
+        .data(skills)
+        .join("clipPath")
+        .attr("id", (_d, i) => `clip-${i}`)
+        .attr("clipPathUnits", "userSpaceOnUse") // important!
+        .append("rect")
+        .attr("x", (d) => -radiusScale(d.totalProblems)) // center left
+        .attr("width", (d) => radiusScale(d.totalProblems) * 2)
+        .attr("height", (d) => {
+          const r = radiusScale(d.totalProblems);
+          const progressRatio = d.numProblemSolved / d.totalProblems;
+          return r * 2 * progressRatio; // height proportional to progress
+        })
+        .attr("y", (d) => {
+          const r = radiusScale(d.totalProblems);
+          const progressRatio = d.numProblemSolved / d.totalProblems;
+          return r - r * 2 * progressRatio; // shift rect from bottom to top inside circle
+        });
+
+      // Join groups to data
+      const groups = svg
+        .selectAll("g.skills")
+        .data(skills)
+        .join("g")
+        .attr("class", "skills")
+        .call((g) => {
+          // Background full circle (track)
+          g.append("circle")
+            .attr("r", (d) => radiusScale(d.totalProblems))
+            .attr("fill", "#ddd")
+            .attr("opacity", 0.3)
+
+            // Attach the click here
+            .on("click", (_event, d: SkillProgress) => {
+              setPopup({ stats: d.stats });
+            });
+
+          g.append("title")
+            .style("font-weight", "bold")
+            .text(
+              (d) =>
+                `${d.skill.id}\n${d.numProblemSolved} / ${d.totalProblems}`,
+            );
+
+          // Multi-line skill text label centered inside the circle
+          g.append("text")
+            .attr("text-anchor", "middle")
+            .attr("pointer-events", "none") // text doesn’t interfere with mouse events
+            .attr("fill", "black")
+            .style("font-weight", "bold")
+            .each(function (d) {
+              const words = d.skill.id.split(" ");
+              const r = radiusScale(d.totalProblems);
+              const fontSize = Math.min(10, r / 3);
+
+              const textEl = select(this)
+                .style("font-size", `${fontSize}px`)
+                .attr("y", -(words.length - 1) * fontSize * 0.55); // vertically center multiline
+
+              words.forEach((word, i) => {
+                textEl
+                  .append("tspan")
+                  .attr("x", 0)
+                  .attr("dy", i === 0 ? "0" : `${fontSize * 1.1}px`)
+                  .text(word);
+              });
+            });
+
+          // Foreground partial fill circle clipped by clipPath
+          g.append("circle")
+            .attr("r", (d) => radiusScale(d.totalProblems))
+            .attr("fill", "skyblue")
+            .attr("clip-path", (_d, i) => `url(#clip-${i})`);
+        });
+
+      // Setup force simulation with charge, center, and collision forces
+      const simulation = forceSimulation<SkillProgress>(skills)
+        .force("charge", forceManyBody().strength(50))
+        .force("center", forceCenter(width / 2, height / 2))
+        .force(
+          "collision",
+          forceCollide<SkillProgress>().radius(
+            (d) => radiusScale(d.totalProblems) + Math.random() * 10,
+          ),
+        )
+        .on("tick", () => {
+          groups.attr("transform", (d) => `translate(${d.x}, ${d.y})`);
+        });
+
+      //svgGroup.on("click", (d: SkillProgress) => {
+      //console.log("Clicked:", d.skill);
+      //});
+
+      return () => {
+        simulation.stop();
+      };
     });
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[800px] bg-white overflow-hidden"
+      style={{ width: `${width}px`, height: `${height}px` }}
+      className="relative bg-white flex justify-center items-center border rounded"
     >
-      {/* Tooltip */}
-      {tooltip && (
-        <div
-          className="absolute bg-black text-white text-xs px-2 py-1 rounded shadow z-50 pointer-events-none"
-          style={{
-            left: tooltip.x + 10,
-            top: tooltip.y - 40,
-            whiteSpace: "nowrap",
-          }}
-        >
-          {tooltip.content}
-        </div>
-      )}
-
       {/* Chart Popup */}
       {popup && (
         <div
           className="absolute z-50 bg-white border shadow-lg rounded p-3"
           style={{
-            top: popup.y - 280,
-            left: popup.x - 350,
             width: "300px",
             height: "300px",
           }}
@@ -86,57 +171,12 @@ export const UserSkillsChart = () => {
         </div>
       )}
 
-      {/* Bubbles */}
-      {bubbles.map((bubble) => (
-        <button
-          key={bubble.skill.id}
-          className="absolute rounded-full bg-gradient-to-br from-cyan-300 to-blue-500 border-2 border-blue-700 shadow-md text-xs text-white flex items-center justify-center text-center font-semibold"
-          style={{
-            top: bubble.y - bubble.r,
-            left: bubble.x - bubble.r,
-            width: bubble.r * 2,
-            height: bubble.r * 2,
-          }}
-          onClick={(e) => {
-            const rect = containerRef.current?.getBoundingClientRect();
-            if (!rect) return;
-            setPopup({
-              x: e.clientX - rect.left,
-              y: e.clientY - rect.top,
-              stats: bubble,
-            });
-          }}
-          onMouseEnter={(e) => {
-            const rect = containerRef.current?.getBoundingClientRect();
-            if (!rect) return;
-            setTooltip({
-              x: e.clientX - rect.left,
-              y: e.clientY - rect.top,
-              content: `${bubble.skill.id}: ${bubble.numProblemSolved}/${bubble.totalProblems}`,
-            });
-          }}
-          onMouseMove={(e) => {
-            const rect = containerRef.current?.getBoundingClientRect();
-            if (!rect) return;
-            setTooltip((prev) =>
-              prev
-                ? {
-                    ...prev,
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
-                  }
-                : null,
-            );
-          }}
-          onMouseLeave={() => setTooltip(null)}
-        >
-          <span className="px-1">
-            {bubble.skill.id.length > 10
-              ? bubble.skill.id.slice(0, 9) + "…"
-              : bubble.skill.id}
-          </span>
-        </button>
-      ))}
+      <svg
+        ref={svgRef}
+        width={width}
+        height={height}
+        className="border rounded bg-blue-50"
+      />
     </div>
   );
 };
