@@ -2,7 +2,7 @@ import santorini from "/pics/santorini.png";
 import raft from "/pics/raft.png";
 import bookservice from "/pics/bookservice.png";
 
-export const projects = [
+export const ongoing = [
   {
     id: 1,
     name: "Santorini",
@@ -17,8 +17,11 @@ export const projects = [
     link: "/raft",
     description: "Raft consensus algorithm.",
   },
+];
+
+export const completed = [
   {
-    id: 3,
+    id: 1,
     name: "Book-Service",
     image: bookservice,
     link: "/bookservice",

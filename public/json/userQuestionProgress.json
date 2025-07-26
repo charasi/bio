@@ -29,26 +29,26 @@
   ],
   "numUntouchedQuestions": [
     {
-      "count": 848,
+      "count": 849,
       "difficulty": "EASY"
     },
     {
-      "count": 1869,
+      "count": 1873,
       "difficulty": "MEDIUM"
     },
     {
-      "count": 851,
+      "count": 855,
       "difficulty": "HARD"
     }
   ],
   "userSessionBeatsPercentage": [
     {
       "difficulty": "EASY",
-      "percentage": 68.85
+      "percentage": 68.84
     },
     {
       "difficulty": "MEDIUM",
-      "percentage": 42.04
+      "percentage": 42.03
     },
     {
       "difficulty": "HARD",
