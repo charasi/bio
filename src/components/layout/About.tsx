@@ -75,9 +75,9 @@ export const About = () => {
           <br />
           I’m constantly exploring new technologies, building side projects,
           learning how systems work under the hood, and sharpening my
-          problem-solving skills through LeetCode. Thanks for stopping by feel
-          free to explore my work or reach out if something sparks your
-          interest.
+          problem-solving skills through LeetCode. Thanks for stopping by,
+          please feel free to explore my work or reach out if something sparks
+          your interest.
         </p>
 
         {/* Divider */}

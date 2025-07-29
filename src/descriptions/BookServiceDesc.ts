@@ -6,11 +6,11 @@ export const bookDesc = [
       "The course emphasized building scalable, cloud-native solutions using real-world tools and " +
       "concepts such as microservices, publish-subscribe messaging, and fault-tolerant design.",
     bullets: {
-      title: "Technologies & Concepts",
+      title: "Technologies & Concepts:",
       items: [
         "AWS Services: EC2, VPC, CloudFormation (CF)",
         "Database: MySQL on AWS RDS",
-        "API Development & Testing: Node.js with Express (or other language/framework), Postman",
+        "API Development & Testing: Postman",
         "Containerization & Orchestration: Docker, Kubernetes, AWS EKS",
         "Authentication & API Gateway: JWT (JSON Web Tokens), BFF (Backend for Frontend) pattern",
         "Software Design Principles: Single Responsibility Principle",

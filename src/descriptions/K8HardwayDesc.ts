@@ -1,28 +1,26 @@
-export const raftDesc = [
+export const k8desc = [
   {
     text:
-      "The focus of this project was implementing the Raft consensus algorithm from scratch in Go, " +
-      "demonstrating how distributed nodes can reliably reach agreement despite crashes, message " +
-      "loss, or network partitions.  The project involved building a complete Raft peer capable of " +
-      "participating in elections, replicating logs, and ensuring consistency across a cluster. " +
-      "Each peer maintained its own state and communicated over a custom RPC layer, " +
-      "coordinating to elect a leader and synchronize logs.",
+      "K8-Hardway is a DevOps infrastructure project that automates the full " +
+      "“Kubernetes the Hard Way” workflow using Jenkins, Terraform, Ansible, and GCP. " +
+      "Built as an infrastructure as code pipeline, it demonstrates key practices in " +
+      "distributed systems, CI/CD automation, and secure cloud provisioning.",
   },
   {
     text:
-      "The project involved building a complete Raft peer capable of participating in elections, " +
-      "replicating logs, and ensuring consistency across a cluster. Each peer maintained its own " +
-      "state and communicated over a custom RPC layer, coordinating to elect a leader and " +
-      "synchronize logs.",
+      "The project tackles the complexity of manually bootstrapping Kubernetes—covering compute " +
+      "provisioning, certificates, networking, and HA setup—by codifying the entire process " +
+      "without relying on packaged installers.",
   },
-  {
-    image: "pics/raft-goal.png",
-  },
+
   {
     bullets: {
-      title: "Languages:",
+      title: "Cloud Infrastructure (Terraform & GCP):",
       items: [
-        "Go for goroutines and strong support for networked systems development",
+        "Modules Used: VPC, firewall rules, target node provisioning, MySQL database setup, and " +
+          "static IP mapping via reusable Terraform modules",
+        "Resources: Created controller and worker instances, a centralized private bucket for PEM files, " +
+          "and defined output variables to propagate infra IDs between modules",
       ],
     },
   },
@@ -90,7 +88,7 @@ export const pending = [
     bullets: {
       title: "Raft Visualization:",
       items: [
-        "Interactive tool to demonstrates the Raft consensus algorithm",
+        "Interactive tool to demonstrates the Raft consensus algorithm’s",
         "To aid in understanding and debugging",
       ],
     },
@@ -114,7 +112,7 @@ export const pending = [
 ];
 
 // Only extract titles that have bullets
-export const raftTitleIds: string[] = raftDesc
+export const raftTitleIds: string[] = k8desc
   .map((section, index) =>
     section.bullets ? `#raft-title-text-${index}` : null,
   )
