@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<Works />} />
         <Route path="/about" element={<About />} />
         <Route path="/raft" element={<Raft />} />
-        {/* <Route path="/santorini" element={<Santorini />} />*/}
+        <Route path="/santorini" element={<Santorini />} />
         <Route path="/bookservice" element={<BookService />} />
         <Route path="/remote-objects" element={<RemoteObjects />} />
         <Route path="/k8-hardway" element={<K8Hardway />} />

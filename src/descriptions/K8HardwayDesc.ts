@@ -26,50 +26,49 @@ export const k8desc = [
   },
   {
     bullets: {
-      title: "Remote Communication:",
-      items: ["Custom RPC library built with Go"],
-    },
-  },
-  {
-    bullets: {
-      title: "Core Raft Features Implemented:",
+      title: "Continuous Integration & Orchestration (Jenkins):",
       items: [
-        "Leader election using randomized election timeouts and term-based voting",
-        "Log replication leader sends AppendEntries RPCs to followers; consistency enforced via " +
-          "term/index checks",
-        "Heartbeat mechanism regular empty AppendEntries messages to assert leadership",
-        "State transitions: Follower → Candidate → Leader cycle with proper term/state management",
-        "Crash and recovery peers deactivated and reactivated via Activate/Deactivate, simulating " +
-          "real world failures",
+        "Jenkins master connects to GCP-provisioned agents using SSH, transferring keys, " +
+          "scanning known hosts, and triggering agent.jar execution via JNLP",
+        "Dynamic Node Creation: Jenkins API used to create nodes and jobs programmatically using " +
+          "jenkinsapi, with secrets fetched and agents authenticated via WebSocket",
+        "Plugin Management: Programmatic installation of plugins (e.g., Ansible, BlueOcean) " +
+          "with plugin restarts handled in setup script",
       ],
     },
   },
   {
     bullets: {
-      title: "Concurrency:",
+      title: "Secure Communication (PKI & TLS):",
       items: [
-        "Coordinated goroutines and channel-based signaling to manage timeouts, RPCs, and state " +
-          "transitions",
+        "CFSSL Installation via Ansible: Automates fetching, setting permissions, and moving PKI " +
+          "tools like cfssl and cfssljson into the system path for secure key/cert generation",
+        "Credential Handling: Uses gsutil to pull private keys and distribute them securely to " +
+          "agent nodes for authentication and TLS bootstrapping",
       ],
     },
   },
   {
     bullets: {
-      title: "Safety Guarantees:",
+      title: "Infrastructure Automation (Ansible):",
       items: [
-        "Only one leader elected per term",
-        "Logs are consistent across all non-faulty peers",
-        "Committed entries are never lost or reordered",
-        "All peers eventually apply the same log entries in order",
+        "Role for Controller Setup: YAML playbooks install Kubernetes CLI tools (kubectl) and " +
+          "CFSSL binaries on controller nodes",
+        "Execution Context: Playbook targets k8main group with elevated privileges and supports " +
+          "idempotent operations",
       ],
     },
   },
   {
     bullets: {
-      title: "Testing and Validation:",
+      title: "CI Job Execution Flow:",
       items: [
-        "Automated tests simulated unreliable networks, message delays, and node failures",
-        "Passed all required checkpoints and final evaluations for correctness under failure",
+        "Jenkins Jobs: install-k8, create-certificates, create-etcd, create-controllers, " +
+          "create-rbac, create-workers",
+        "Execution Logic: Each job reads from XML definitions, runs sequentially, and checks " +
+          "for build success before proceeding—terminating early on any failure",
+        "Artifact Syncing: PEM files, agent binaries, and other job artifacts are downloaded " +
+          "from the central GCS bucket using gsutil via SSH commands from Jenkins",
       ],
     },
   },

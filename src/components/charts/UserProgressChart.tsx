@@ -27,7 +27,10 @@ export const UserProgressChart = () => {
 
   const handleMouseEnter = () => {
     if (chartRef.current) {
-      const showHoverText = actions.find((a) => a.name === "Show Hover Text");
+      const showHoverText = actions.find(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (a: any) => a.name === "Show Hover Text",
+      );
       showHoverText?.handler(chartRef.current);
     }
   };
@@ -35,7 +38,8 @@ export const UserProgressChart = () => {
   const handleMouseLeave = () => {
     if (chartRef.current) {
       const showDefaultText = actions.find(
-        (a) => a.name === "Show Default Text",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (a: any) => a.name === "Show Default Text",
       );
       showDefaultText?.handler(chartRef.current);
     }

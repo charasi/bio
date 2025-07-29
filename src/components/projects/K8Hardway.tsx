@@ -69,7 +69,7 @@ export const K8Hardway = () => {
 
             {/* Bullet Section */}
             {section.bullets && (
-              <div className="space-y-1">
+              <div className="">
                 <span
                   //id="raft-title-text"
                   id={`k8-title-text-${index + 1}`}
