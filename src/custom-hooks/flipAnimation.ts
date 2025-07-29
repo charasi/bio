@@ -3,18 +3,21 @@ import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
 
-type Animatable = "title" | "text" | "bullets" | "image";
+//type Animatable = "title" | "text" | "bullets" | "image";
 
 interface UseFlipAnimationParams {
   flipState: ReturnType<typeof Flip.getState> | null;
   setFlipState: (state: ReturnType<typeof Flip.getState> | null) => void;
   setIsReady?: (ready: boolean) => void;
-  animationOrder?: Animatable[];
+  animationOrder?: string[];
+  targetOrder?: string[][];
+  refTagElement: string;
 }
 
 interface UseFlipAnimationReturn {
-  imgRef: RefObject<HTMLImageElement | null>;
-  textRef: RefObject<HTMLDivElement | null>;
+  divRef: RefObject<HTMLDivElement | null>;
+  //imgRef: RefObject<HTMLImageElement | null>;
+  //textRef: RefObject<HTMLDivElement | null>;
 }
 
 export function useFlipAnimation({
@@ -22,50 +25,46 @@ export function useFlipAnimation({
   setFlipState,
   setIsReady,
   animationOrder,
+  targetOrder,
+  refTagElement,
 }: UseFlipAnimationParams): UseFlipAnimationReturn {
-  const imgRef = useRef<HTMLImageElement | null>(null);
-  const textRef = useRef<HTMLDivElement | null>(null);
-  const hasAnimated = useRef(false);
+  const ref: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(
+    null,
+  );
+  const hasAnimated: RefObject<boolean> = useRef(false);
 
   useEffect(() => {
-    if (!imgRef.current) return;
-
+    if (!ref.current) return;
+    const flipElem: Element | null = ref.current.querySelector(refTagElement);
     if (!hasAnimated.current && flipState) {
       hasAnimated.current = true;
 
       Flip.from(flipState, {
-        targets: imgRef.current,
+        targets: flipElem,
         duration: 1,
         ease: "power1.inOut",
         onComplete: () => {
-          const state = Flip.getState(imgRef.current);
+          const state = Flip.getState(flipElem);
           setFlipState(state);
-
-          if (!textRef.current) return;
 
           document.fonts.ready.then(() => {
             const timeline = gsap.timeline({
               onStart: () => setIsReady?.(true),
             });
 
-            const lines = textRef.current!.querySelectorAll(".line");
+            const order = animationOrder ?? [
+              "text",
+              "title",
+              "bullets",
+              "image",
+            ];
 
-            lines.forEach((line) => {
-              const titleEl = line.querySelector("span.words.text-lg");
-              const wordsEl = line.querySelector(".words:not(.text-lg)");
-              const bulletItems = line.querySelectorAll("ul > li.words");
-              const image = line.querySelector(".inline-img");
-
-              const order = animationOrder ?? [
-                "text",
-                "title",
-                "bullets",
-                "image",
-              ];
-
-              order.forEach((key) => {
-                switch (key) {
-                  case "text":
+            order.forEach((key: string, index: number) => {
+              const target: string[] = targetOrder![index];
+              switch (key) {
+                case "text":
+                  target.forEach((element: string) => {
+                    const wordsEl = ref.current!.querySelectorAll(element);
                     if (wordsEl) {
                       const split = SplitText.create(wordsEl, {
                         type: "words",
@@ -82,29 +81,12 @@ export function useFlipAnimation({
                         },
                       );
                     }
-                    break;
+                  });
+                  break;
 
-                  case "title":
-                    if (titleEl) {
-                      const split = SplitText.create(titleEl, {
-                        type: "words",
-                      });
-                      timeline.fromTo(
-                        split.words,
-                        { opacity: 0, y: 10 },
-                        {
-                          opacity: 1,
-                          y: 0,
-                          stagger: 0.05,
-                          duration: 0.8,
-                          ease: "power2.out",
-                        },
-                        "-=0.3",
-                      );
-                    }
-                    break;
-
-                  case "bullets":
+                case "bullets":
+                  target.forEach((element: string) => {
+                    const bulletItems = ref.current!.querySelectorAll(element);
                     if (bulletItems.length > 0) {
                       timeline.fromTo(
                         bulletItems,
@@ -119,9 +101,12 @@ export function useFlipAnimation({
                         "-=0.3",
                       );
                     }
-                    break;
+                  });
+                  break;
 
-                  case "image":
+                case "image":
+                  target.forEach((element: string) => {
+                    const image = ref.current!.querySelectorAll(element);
                     if (image) {
                       timeline.fromTo(
                         image,
@@ -135,18 +120,18 @@ export function useFlipAnimation({
                         "+=0.2",
                       );
                     }
-                    break;
-                }
-              });
+                  });
+                  break;
+              }
             });
           });
         },
       });
     } else if (!flipState) {
-      const state = Flip.getState(imgRef.current);
+      const state = Flip.getState(flipElem);
       setFlipState(state);
     }
   }, [flipState, setFlipState, animationOrder, setIsReady]);
 
-  return { imgRef, textRef };
+  return { divRef: ref };
 }

@@ -1,5 +1,5 @@
 import { useFlipStore } from "../../utils/flipStore.ts";
-import { useFlipAnimation } from "../../hooks/flipAnimation.ts";
+import { useFlipAnimation } from "../../custom-hooks/flipAnimation.ts";
 import { useState } from "react";
 import { bookDesc } from "../../descriptions/BookServiceDesc.ts";
 
