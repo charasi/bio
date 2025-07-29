@@ -1,0 +1,110 @@
+{
+  "tagProblemCounts": {
+    "advanced": [
+      {
+        "tagName": "Dynamic Programming",
+        "tagSlug": "dynamic-programming",
+        "problemsSolved": 5
+      }
+    ],
+    "intermediate": [
+      {
+        "tagName": "Tree",
+        "tagSlug": "tree",
+        "problemsSolved": 4
+      },
+      {
+        "tagName": "Binary Tree",
+        "tagSlug": "binary-tree",
+        "problemsSolved": 3
+      },
+      {
+        "tagName": "Hash Table",
+        "tagSlug": "hash-table",
+        "problemsSolved": 10
+      },
+      {
+        "tagName": "Greedy",
+        "tagSlug": "greedy",
+        "problemsSolved": 2
+      },
+      {
+        "tagName": "Binary Search",
+        "tagSlug": "binary-search",
+        "problemsSolved": 3
+      },
+      {
+        "tagName": "Depth-First Search",
+        "tagSlug": "depth-first-search",
+        "problemsSolved": 4
+      },
+      {
+        "tagName": "Recursion",
+        "tagSlug": "recursion",
+        "problemsSolved": 4
+      },
+      {
+        "tagName": "Sliding Window",
+        "tagSlug": "sliding-window",
+        "problemsSolved": 3
+      },
+      {
+        "tagName": "Math",
+        "tagSlug": "math",
+        "problemsSolved": 6
+      },
+      {
+        "tagName": "Design",
+        "tagSlug": "design",
+        "problemsSolved": 1
+      },
+      {
+        "tagName": "Iterator",
+        "tagSlug": "iterator",
+        "problemsSolved": 1
+      }
+    ],
+    "fundamental": [
+      {
+        "tagName": "Array",
+        "tagSlug": "array",
+        "problemsSolved": 21
+      },
+      {
+        "tagName": "Matrix",
+        "tagSlug": "matrix",
+        "problemsSolved": 1
+      },
+      {
+        "tagName": "String",
+        "tagSlug": "string",
+        "problemsSolved": 14
+      },
+      {
+        "tagName": "Sorting",
+        "tagSlug": "sorting",
+        "problemsSolved": 5
+      },
+      {
+        "tagName": "Stack",
+        "tagSlug": "stack",
+        "problemsSolved": 5
+      },
+      {
+        "tagName": "Queue",
+        "tagSlug": "queue",
+        "problemsSolved": 2
+      },
+      {
+        "tagName": "Linked List",
+        "tagSlug": "linked-list",
+        "problemsSolved": 6
+      },
+      {
+        "tagName": "Two Pointers",
+        "tagSlug": "two-pointers",
+        "problemsSolved": 14
+      }
+    ]
+  }
+}

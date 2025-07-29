@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { projects } from "../../utils/misc.ts";
+import { ongoing, completed } from "../../utils/misc.ts";
 import { useNavigate } from "react-router-dom";
 import { useFlipStore } from "../../utils/flipStore.ts";
 import Flip from "gsap/Flip";
@@ -8,7 +8,6 @@ export const Works = () => {
   const { flipState, setFlipState } = useFlipStore();
   const navigate = useNavigate();
 
-  // Store refs for each project by name
   const flipRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const handleClick = (link: string, flipId: string) => {
@@ -23,7 +22,6 @@ export const Works = () => {
   const hasAnimated = useRef(false);
 
   useEffect(() => {
-    //(!hasAnimated.current && flipState)
     if (!hasAnimated.current && flipState) {
       const elements = Object.values(flipRefs.current).filter(Boolean);
       if (elements.length > 0) {
@@ -40,7 +38,7 @@ export const Works = () => {
   }, []);
 
   return (
-    <div className="pt-4 flex flex-1 items-start bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen">
+    <div className="pt-4 pb-20 flex flex-1 items-start bg-gradient-to-r from-cyan-950 to-indigo-950 min-h-screen">
       {/* Left column */}
       <div className="flex flex-col justify-center items-center min-w-[80px] pt-20 -ml-8">
         <span className="text-white text-4xl font-bold transform -rotate-90 origin-center">
@@ -52,8 +50,9 @@ export const Works = () => {
       {/* Divider */}
       <div className="inline-block h-[350px] w-0.5 bg-neutral-100 dark:bg-white/10 -ml-8"></div>
 
-      {/* Right side */}
+      {/* Right column */}
       <div className="relative flex flex-col space-y-6 pl-8">
+        {/* Ongoing Section */}
         <h1 className="text-white text-2xl font-bold">
           <span className="text-red-400 text-3xl">[ </span>
           Ongoing
@@ -61,7 +60,37 @@ export const Works = () => {
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {projects.map((project) => (
+          {ongoing.map((project) => (
+            <div
+              key={project.link}
+              onClick={() => handleClick(project.link, project.name)}
+              className="flex flex-col items-center cursor-pointer"
+            >
+              <img
+                src={project.image}
+                alt={project.name}
+                data-flip-id={project.name}
+                ref={(el) => {
+                  flipRefs.current[project.name] = el;
+                }}
+                className="w-88 h-88 object-cover rounded-xl shadow-lg hover:scale-105"
+              />
+              <span className="mt-2 text-white text-lg font-medium">
+                {project.name}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Completed Section */}
+        <h1 className="text-white text-2xl font-bold">
+          <span className="text-red-400 text-3xl">[ </span>
+          Completed
+          <span className="text-red-400 text-3xl"> ]</span>
+        </h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+          {completed.map((project) => (
             <div
               key={project.link}
               onClick={() => handleClick(project.link, project.name)}

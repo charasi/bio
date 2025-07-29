@@ -1,0 +1,59 @@
+{
+  "numAcceptedQuestions": [
+    {
+      "count": 36,
+      "difficulty": "EASY"
+    },
+    {
+      "count": 11,
+      "difficulty": "MEDIUM"
+    },
+    {
+      "count": 0,
+      "difficulty": "HARD"
+    }
+  ],
+  "numFailedQuestions": [
+    {
+      "count": 1,
+      "difficulty": "EASY"
+    },
+    {
+      "count": 1,
+      "difficulty": "MEDIUM"
+    },
+    {
+      "count": 0,
+      "difficulty": "HARD"
+    }
+  ],
+  "numUntouchedQuestions": [
+    {
+      "count": 849,
+      "difficulty": "EASY"
+    },
+    {
+      "count": 1877,
+      "difficulty": "MEDIUM"
+    },
+    {
+      "count": 856,
+      "difficulty": "HARD"
+    }
+  ],
+  "userSessionBeatsPercentage": [
+    {
+      "difficulty": "EASY",
+      "percentage": 68.82
+    },
+    {
+      "difficulty": "MEDIUM",
+      "percentage": 42.02
+    },
+    {
+      "difficulty": "HARD",
+      "percentage": null
+    }
+  ],
+  "totalQuestionBeatsPercentage": 59.8
+}
