@@ -48,7 +48,7 @@ export const completed = [
   },
   {
     id: 4,
-    name: "Bio-Informatics",
+    name: "BioInformatics",
     image: bioinformatics,
     link: "/bio-informatics",
     description:

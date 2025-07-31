@@ -47,7 +47,7 @@ export const Santorini = () => {
         <div className="flex flex-col items-center space-y-4">
           {/* Launch Button */}
           <a
-            href=""
+            href="https://santorini-game.vercel.app/"
             target="_blank"
             className="btn bg-[#ffe500] rounded-tr-[8px] rounded-br-none
     rounded-tl-none rounded-bl-[8px] font-sans leading-[24px] py-2 px-6

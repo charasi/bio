@@ -1,14 +1,14 @@
 export const santoriniDesc = [
   {
     text:
-      "Santorini-Pixi is a browser based reimagining of the Santorini board game, combining PixiJS, " +
+      "Santorini is a browser based reimagining of the Santorini board game, combining PixiJS, " +
       "React, Zustand, GSAP, and Spine 2D. The project explores interactive scene management, " +
       "isometric tile rendering, character animation, and state-driven UI in a " +
-      "modern frontend architecture",
+      "modern frontend architecture.",
   },
   {
     bullets: {
-      title: "NOTE: Game is still in progress.",
+      title: "NOTE: Development is still in progress.",
       items: [],
     },
   },
@@ -16,20 +16,10 @@ export const santoriniDesc = [
     bullets: {
       title: "Rendering & Animation:",
       items: [
-        "PixiJS v8: Scene graph rendering, layered object depth sorting, and dynamic tile stacking",
-        "Spine Skeleton Animation: Custom animated tree via JSON + Atlas integration",
-        "GSAP + PixiPlugin: Overlay animation and interactive transitions",
-      ],
-    },
-  },
-  {
-    bullets: {
-      title: "Map Composition & Assets:",
-      items: [
-        "Tiled JSON Map: Isometric grid projection with z-index aware object placement",
-        "Tilemap Engine: CompositeTilemap for batched terrain rendering",
-        "Displacement Mapping: Realistic animated ocean background with repeat-wrapped filters",
-        "Texture Bundling: Preloading 20+ assets via PixiJS Assets.load()",
+        "PixiJS for scene graph rendering, layered object depth sorting, and dynamic tile stacking",
+        "Spine skeleton animation for custom animated tree via JSON + Atlas integration",
+        "GSAP + PixiPlugin for overlay animation and interactive transitions",
+        "Tiled JSON Map for isometric grid projection with z-index aware object placement",
       ],
     },
   },
@@ -37,10 +27,10 @@ export const santoriniDesc = [
     bullets: {
       title: "Architecture & Scene Management:",
       items: [
-        "Overlay Scene Stack: Push/pop overlay design for IntroScene, MenuScene, etc.",
-        "Zustand Global Store: Tracks game phase (Place, Move, Build), selected tile, " +
+        "Overlay Scene Stack to push/pop overlay design for IntroScene, MenuScene, etc.",
+        "Zustand Global Store tracks game phase (Place, Move, Build), selected tiles, " +
           "and game state flags",
-        "SceneManager Class: Coordinates canvas elements and controls resizing/interaction flow",
+        "SceneManager Class tp coordinate canvas elements and control resizing/interaction flow",
       ],
     },
   },
@@ -54,17 +44,6 @@ export const santoriniDesc = [
       ],
     },
   },
-  {
-    bullets: {
-      title: "Game Mechanics:",
-      items: [
-        "GridContainer Metadata: Each cell tracks its own 3D stack via height-based block positioning",
-        "Message Flow System: Player feedback using global message state and animated transitions",
-        "Turn Validation: Guardrails for correct player actions using gameplay.currentPlayer check",
-      ],
-    },
-  },
-
   // Add more with different image paths
 ];
 

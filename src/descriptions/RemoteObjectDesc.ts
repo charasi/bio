@@ -10,10 +10,10 @@ export const remoteObjectDesc = [
   {
     text:
       "The service handles connection management, method dispatching, and response encoding, " +
-      "while the client stub manages serialization, communication, and error handling." +
-      "The library enforces a shared service interface between client and server, " +
+      "while the client stub manages serialization, communication, and error handling. " +
+      " The library enforces a shared service interface between client and server, " +
       "including support for custom remote exceptions to distinguish protocol-level issues " +
-      "from application errors. Also it uses reflection to dynamically handle arbitrary method " +
+      "from application errors.  Also it uses reflection to dynamically handle arbitrary method " +
       "signatures. " +
       "For resilience testing, it includes a LeakySocket wrapper to simulate lossy or delayed " +
       "networks.",
