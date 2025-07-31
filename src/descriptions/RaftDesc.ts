@@ -81,7 +81,7 @@ export const raftDesc = [
 
 export const pending = [
   {
-    title: "Upcoming Work",
+    title: "Upcoming Enhancements",
     text:
       "These upcoming tasks are planned enhancements to improve the Raft consensus system’s " +
       "functionality and usability:",

@@ -216,7 +216,7 @@
         "difficulty": "MEDIUM"
       },
       {
-        "count": 121,
+        "count": 122,
         "difficulty": "HARD"
       }
     ],
@@ -739,7 +739,7 @@
         "difficulty": "EASY"
       },
       {
-        "count": 1054,
+        "count": 1055,
         "difficulty": "MEDIUM"
       },
       {
@@ -758,7 +758,7 @@
       },
       {
         "difficulty": "MEDIUM",
-        "percentage": 1.4038139371756273
+        "percentage": 1.4025013916832307
       }
     ]
   },
@@ -916,7 +916,7 @@
         "difficulty": "EASY"
       },
       {
-        "count": 272,
+        "count": 273,
         "difficulty": "MEDIUM"
       },
       {
@@ -927,7 +927,7 @@
     "userSessionBeatsPercentage": [
       {
         "difficulty": "MEDIUM",
-        "percentage": 0.911570686945268
+        "percentage": 0.908258941097003
       },
       {
         "difficulty": "EASY",
