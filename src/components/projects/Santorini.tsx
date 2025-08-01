@@ -34,9 +34,7 @@ export const Santorini = () => {
     >
       {/* Left Column */}
       <div className="flex flex-col items-center mr-8 flex-shrink-0">
-        <span className="text-white text-4xl font-bold mb-3">
-          BioInformatics
-        </span>
+        <span className="text-white text-4xl font-bold mb-3">Santorini</span>
         <img
           src="/pics/santorini.png"
           id="santorini-logo"
