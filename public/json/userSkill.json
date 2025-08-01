@@ -78,7 +78,12 @@
       {
         "tagName": "String",
         "tagSlug": "string",
-        "problemsSolved": 14
+        "problemsSolved": 15
+      },
+      {
+        "tagName": "Simulation",
+        "tagSlug": "simulation",
+        "problemsSolved": 1
       },
       {
         "tagName": "Sorting",
@@ -88,7 +93,7 @@
       {
         "tagName": "Stack",
         "tagSlug": "stack",
-        "problemsSolved": 5
+        "problemsSolved": 6
       },
       {
         "tagName": "Queue",

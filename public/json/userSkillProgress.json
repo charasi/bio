@@ -275,7 +275,7 @@
         "difficulty": "MEDIUM"
       },
       {
-        "count": 94,
+        "count": 95,
         "difficulty": "HARD"
       }
     ],
@@ -570,7 +570,7 @@
         "difficulty": "MEDIUM"
       },
       {
-        "count": 164,
+        "count": 165,
         "difficulty": "HARD"
       }
     ],
@@ -743,7 +743,7 @@
         "difficulty": "MEDIUM"
       },
       {
-        "count": 501,
+        "count": 502,
         "difficulty": "HARD"
       }
     ],
@@ -829,7 +829,7 @@
         "difficulty": "EASY"
       },
       {
-        "count": 3,
+        "count": 4,
         "difficulty": "MEDIUM"
       },
       {
@@ -857,7 +857,7 @@
         "difficulty": "EASY"
       },
       {
-        "count": 392,
+        "count": 391,
         "difficulty": "MEDIUM"
       },
       {
@@ -868,7 +868,7 @@
     "userSessionBeatsPercentage": [
       {
         "difficulty": "MEDIUM",
-        "percentage": 1.8808217686658963
+        "percentage": 2.4998681518223407
       },
       {
         "difficulty": "HARD",
@@ -877,6 +877,65 @@
       {
         "difficulty": "EASY",
         "percentage": 11.269386185960158
+      }
+    ]
+  },
+  {
+    "id": "simulation",
+    "numAcceptedQuestions": [
+      {
+        "count": 0,
+        "difficulty": "EASY"
+      },
+      {
+        "count": 1,
+        "difficulty": "MEDIUM"
+      },
+      {
+        "count": 0,
+        "difficulty": "HARD"
+      }
+    ],
+    "numFailedQuestions": [
+      {
+        "count": 0,
+        "difficulty": "EASY"
+      },
+      {
+        "count": 0,
+        "difficulty": "MEDIUM"
+      },
+      {
+        "count": 0,
+        "difficulty": "HARD"
+      }
+    ],
+    "numUntouchedQuestions": [
+      {
+        "count": 78,
+        "difficulty": "EASY"
+      },
+      {
+        "count": 93,
+        "difficulty": "MEDIUM"
+      },
+      {
+        "count": 14,
+        "difficulty": "HARD"
+      }
+    ],
+    "userSessionBeatsPercentage": [
+      {
+        "difficulty": "MEDIUM",
+        "percentage": 2.624519247110797
+      },
+      {
+        "difficulty": "EASY",
+        "percentage": 0
+      },
+      {
+        "difficulty": "HARD",
+        "percentage": 0
       }
     ]
   },
@@ -947,7 +1006,7 @@
         "difficulty": "EASY"
       },
       {
-        "count": 1,
+        "count": 2,
         "difficulty": "MEDIUM"
       },
       {
@@ -975,7 +1034,7 @@
         "difficulty": "EASY"
       },
       {
-        "count": 96,
+        "count": 95,
         "difficulty": "MEDIUM"
       },
       {
@@ -994,7 +1053,7 @@
       },
       {
         "difficulty": "MEDIUM",
-        "percentage": 2.544390211320362
+        "percentage": 5.024041207166121
       }
     ]
   },
