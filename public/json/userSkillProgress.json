@@ -180,7 +180,7 @@
     "id": "hash-table",
     "numAcceptedQuestions": [
       {
-        "count": 8,
+        "count": 9,
         "difficulty": "EASY"
       },
       {
@@ -208,7 +208,7 @@
     ],
     "numUntouchedQuestions": [
       {
-        "count": 164,
+        "count": 163,
         "difficulty": "EASY"
       },
       {
@@ -223,7 +223,7 @@
     "userSessionBeatsPercentage": [
       {
         "difficulty": "EASY",
-        "percentage": 10.977324674415485
+        "percentage": 12.261900711944847
       },
       {
         "difficulty": "MEDIUM",
@@ -707,7 +707,7 @@
     "id": "array",
     "numAcceptedQuestions": [
       {
-        "count": 15,
+        "count": 16,
         "difficulty": "EASY"
       },
       {
@@ -735,7 +735,7 @@
     ],
     "numUntouchedQuestions": [
       {
-        "count": 381,
+        "count": 380,
         "difficulty": "EASY"
       },
       {
@@ -750,7 +750,7 @@
     "userSessionBeatsPercentage": [
       {
         "difficulty": "EASY",
-        "percentage": 9.013445058910577
+        "percentage": 9.584607991820988
       },
       {
         "difficulty": "HARD",

@@ -1,7 +1,7 @@
 {
   "numAcceptedQuestions": [
     {
-      "count": 36,
+      "count": 37,
       "difficulty": "EASY"
     },
     {
@@ -29,7 +29,7 @@
   ],
   "numUntouchedQuestions": [
     {
-      "count": 849,
+      "count": 848,
       "difficulty": "EASY"
     },
     {
@@ -44,7 +44,7 @@
   "userSessionBeatsPercentage": [
     {
       "difficulty": "EASY",
-      "percentage": 68.81
+      "percentage": 69.56
     },
     {
       "difficulty": "MEDIUM",
@@ -55,5 +55,5 @@
       "percentage": null
     }
   ],
-  "totalQuestionBeatsPercentage": 61
+  "totalQuestionBeatsPercentage": 61.7
 }
