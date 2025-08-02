@@ -5,7 +5,7 @@
       "difficulty": "EASY"
     },
     {
-      "count": 12,
+      "count": 13,
       "difficulty": "MEDIUM"
     },
     {
@@ -33,7 +33,7 @@
       "difficulty": "EASY"
     },
     {
-      "count": 1876,
+      "count": 1875,
       "difficulty": "MEDIUM"
     },
     {
@@ -48,12 +48,12 @@
     },
     {
       "difficulty": "MEDIUM",
-      "percentage": 44.08
+      "percentage": 46
     },
     {
       "difficulty": "HARD",
       "percentage": null
     }
   ],
-  "totalQuestionBeatsPercentage": 60.4
+  "totalQuestionBeatsPercentage": 61
 }
