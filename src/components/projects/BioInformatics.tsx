@@ -41,7 +41,7 @@ export const BioInformatics = () => {
           src="/pics/bioinformatics.png"
           id="bio-informatics"
           alt="Bio Informatics"
-          data-flip-id="Bio-Informatics"
+          data-flip-id="BioInformatics"
           className="w-80 h-80 object-cover rounded-xl shadow-lg mb-3"
         />
         <a
