@@ -68,7 +68,7 @@
       {
         "tagName": "Array",
         "tagSlug": "array",
-        "problemsSolved": 21
+        "problemsSolved": 22
       },
       {
         "tagName": "Matrix",
@@ -83,7 +83,7 @@
       {
         "tagName": "Simulation",
         "tagSlug": "simulation",
-        "problemsSolved": 1
+        "problemsSolved": 2
       },
       {
         "tagName": "Sorting",
@@ -93,7 +93,7 @@
       {
         "tagName": "Stack",
         "tagSlug": "stack",
-        "problemsSolved": 6
+        "problemsSolved": 7
       },
       {
         "tagName": "Queue",
