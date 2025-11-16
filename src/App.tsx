@@ -14,6 +14,7 @@ import { useGSAP } from "@gsap/react";
 import { BookService } from "./components/projects/BookService.tsx";
 import { RemoteObjects } from "./components/projects/RemoteObjects.tsx";
 import { K8Hardway } from "./components/projects/K8Hardway.tsx";
+import { AlgoWB } from "./components/projects/AlgoWB.tsx";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Flip);
@@ -28,6 +29,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Works />} />
         <Route path="/about" element={<About />} />
+        <Route path="/algoWB" element={<AlgoWB />} />
         <Route path="/raft" element={<Raft />} />
         <Route path="/santorini" element={<Santorini />} />
         <Route path="/bookservice" element={<BookService />} />

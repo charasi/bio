@@ -4,17 +4,25 @@ import bookservice from "/pics/bookservice.png";
 import remoteObjects from "/pics/remoteobjects.png";
 import k8hardway from "/pics/k8hardway.png";
 import bioinformatics from "/pics/bioinformatics.png";
+import algoWB from "/pics/algoWB.png";
 
 export const ongoing = [
   {
     id: 1,
+    name: "AlgoWB",
+    image: algoWB,
+    link: "/algoWB",
+    description: "Platform that helps increase your algorithms skills",
+  },
+  {
+    id: 2,
     name: "Santorini",
     image: santorini,
     link: "/santorini",
     description: "A board game implementation in PixiJS.",
   },
   {
-    id: 2,
+    id: 3,
     name: "Raft",
     image: raft,
     link: "/raft",
