@@ -24,7 +24,7 @@ export const Footer = () => {
         </div>
 
         {/* Center-aligned text */}
-        <div className="flex-1 text-center">© 2025 Charles Asiama.</div>
+        <div className="flex-1 text-center">© 2026 Charles Asiama.</div>
 
         {/* Right-side empty block, same width as icon group */}
         <div className="flex space-x-6 opacity-0 pointer-events-none">
