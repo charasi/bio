@@ -5,6 +5,11 @@
         "tagName": "Dynamic Programming",
         "tagSlug": "dynamic-programming",
         "problemsSolved": 5
+      },
+      {
+        "tagName": "Divide and Conquer",
+        "tagSlug": "divide-and-conquer",
+        "problemsSolved": 1
       }
     ],
     "intermediate": [
@@ -21,7 +26,7 @@
       {
         "tagName": "Hash Table",
         "tagSlug": "hash-table",
-        "problemsSolved": 11
+        "problemsSolved": 12
       },
       {
         "tagName": "Greedy",
@@ -68,7 +73,7 @@
       {
         "tagName": "Array",
         "tagSlug": "array",
-        "problemsSolved": 23
+        "problemsSolved": 24
       },
       {
         "tagName": "Matrix",
@@ -88,7 +93,7 @@
       {
         "tagName": "Sorting",
         "tagSlug": "sorting",
-        "problemsSolved": 5
+        "problemsSolved": 6
       },
       {
         "tagName": "Stack",

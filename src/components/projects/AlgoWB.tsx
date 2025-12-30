@@ -43,7 +43,7 @@ export const AlgoWB = () => {
           className="w-80 h-80 object-cover rounded-xl shadow-lg mb-3"
         />
         <a
-          href="https://pixi-algo.vercel.app/"
+          href="https://algoworkbench.com/"
           target="_blank"
           className="btn bg-[#ffe500] rounded-tr-[8px] rounded-br-none
           rounded-tl-none rounded-bl-[8px] font-sans leading-[24px] py-2 px-6
